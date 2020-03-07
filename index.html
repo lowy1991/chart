@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+	<title>Daimoku Chart</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="static/css/style.css">
+	<link href="https://fonts.googleapis.com/css?family=Bitter&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Ma+Shan+Zheng&display=swap" rel="stylesheet">
+</head>
+<body>
+	<div class="align-items-center container d-flex flex-column justify-content-center pt-5">
+		<div class="mb-5">
+			<h1 class="text-center">Daimoku Chart <span class="mandarin">(题目表)</span></h1>
+		</div>
+		<div class="mb-5 d-flex justify-content-around w-100">
+			<div class="info text-center">
+				<h4>Today</h4>
+			</div>
+			<div class="info text-center">
+				<h4>This month</h4>
+			</div>
+			<div class="info text-center">
+				<h4>This year</h4>
+			</div>
+		</div>
+		<div id="charts" class="carousel slide w-100">
+    	 	<div class="carousel-inner d-flex mb-3 justify-content-center" id="carousel-inner">
+    		</div>
+    		<a class="carousel-control-prev" href="#charts" data-slide="prev">
+    			<span class="carousel-control-prev-icon"></span>
+  			</a>
+  			<a class="carousel-control-next" href="#charts" data-slide="next">
+    			<span class="carousel-control-next-icon"></span>
+  			</a>
+  			<ul class="carousel-indicators" id="carousel-indicator">
+    	 	</ul>
+  		</div>
+	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+	<script src="static/js/generate.js"></script>
+</body>
+</html>
