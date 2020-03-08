@@ -126,6 +126,7 @@ function update() {
 	if (count == (maxNum-1)) {
 		count 	= 0;
 		page++;
+		carouselPage++;
 		play.carousel('next');	
 	}
 	else {
