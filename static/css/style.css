@@ -1,6 +1,6 @@
 *		{ margin: 0; padding: 0; }
 a 		{ color: #FBFBFF; }
-body 	{ width: 100%; height: 100%; background-color: #706677; background-image: linear-gradient(rgba(0, 0, 0, 0.38), rgba(0, 0, 0, 0.38)), url(../img/sunset.jpg); background-position: center; background-repeat: no-repeat; background-size: cover; color: #FFFFFF; font-family: 'Josefin Sans'; font-size: 1rem; }
+body 	{ width: 100%; height: 100%; background-attachment: fixed; background-color: #706677; background-image: linear-gradient(rgba(0, 0, 0, 0.38), rgba(0, 0, 0, 0.38)), url(../img/sunset.jpg); background-position: center; background-repeat: no-repeat; background-size: cover; color: #FFFFFF; font-family: 'Josefin Sans'; font-size: 1rem; }
 html 	{ width: 100%; height: 100%; }
 
 .bg 	{ background-color: rgba(62,78,80); }
