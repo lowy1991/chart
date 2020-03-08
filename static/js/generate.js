@@ -11,7 +11,7 @@ var count 		= 0;
 var page 		= 0;
 var maxCol 			= 10;
 var maxColMobile	= 5;
-var maxItem			= 400;
+var maxItem			= 1000;
 var maxNum			= 0;
 var maxPage			= 0;
 
