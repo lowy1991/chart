@@ -11,8 +11,8 @@ var maxNum			= 0;
 function getWidth() {
 	var carouselItem= $('.carousel-item');
 	var imgWidth 	= 0; 
-	if (window.matchMedia("(max-width: 760px)").matches) {
-		maxNum		= 20;
+	if (window.matchMedia("(max-width: 768px)").matches) {
+		maxNum		= 25;
 		return imgWidth	= Math.floor(parseInt(carouselItem.width())/maxColMobile);
 	}
 	else {
