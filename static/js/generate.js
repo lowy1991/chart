@@ -32,7 +32,7 @@ function checkCookie() {
 	var currCount 	= getCookie('count');
 	if (currCount == "") {
 		setCookie('count', 0, 365);
-		setCookie('page', 1, 365);
+		setCookie('page', 0, 365);
 	}
 }	
 
@@ -99,7 +99,9 @@ function loadChart(selector, imgWidth) {
 	var padding	= imgWidth/10;
 	for (j = 0; j < maxNum; j++) {
   		$(`#chart-${selector}`).append(`<img src="static/img/lion.svg" class="center-block" id="lion-${j}"/>`);
-  		$(`#chart-${selector} #lion-${j}`).css('filter', 'grayscale(100%)');
+  		if (selector >= page && j >= count) {
+  			$(`#chart-${selector} #lion-${j}`).css('filter', 'grayscale(100%)');	
+  		}
   		$(`#chart-${selector} #lion-${j}`).css('padding', padding);
   		$(`#chart-${selector} #lion-${j}`).width(imgWidth-padding*2);
 	}
@@ -124,7 +126,6 @@ function update() {
 	}
 	setCookie('count', count, 365);
 	setCookie('page', page, 365);
-	var currCount = getCookie('count');
 }
 
 controlLeft.click(function () {
