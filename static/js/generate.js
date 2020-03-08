@@ -19,8 +19,8 @@ function loadCarousel() {
 }
 
 function loadChart(selector) {
-	for (j = 0; j < 36; j++) {
-  		$(`#chart-${selector}`).append('<img src="static/img/lion.svg" class="center-block filter p-2" id="lion-' + j + '" />');
+	for (j = 0; j < 35; j++) {
+  		$(`#chart-${selector}`).append('<img src="static/img/lion.svg" class="center-block filter" id="lion-' + j + '" />');
   		$(`#chart-${selector} #lion-${j}`).css('filter', 'grayscale(100%)');
 	}
 }
@@ -33,6 +33,9 @@ $(document).ready(function() {
 	play.carousel('pause');
 	loadChart(0);
 	loadCarousel();
+	console.log($('img').css('width'));
+	console.log($('.carousel-item').css('width'));
+	console.log(parseInt($('.carousel-item').css('width'))/parseInt($('img').css('width')))
 	// loadChart();
 	// $('#lion-'+count).css('cursor', 'pointer');
 	// $('#lion-'+count).addClass('filter');
