@@ -6,24 +6,37 @@ var count 		= 0;
 var page 		= 0;
 var maxCol 			= 10;
 var maxColMobile	= 5;
+var maxItem			= 500;
 var maxNum			= 0;
+var maxPage			= 0;
+
+function getMaxpages() {
+	if (window.matchMedia("(max-width: 768px)").matches) {
+		maxNum		= 25;
+	}
+	else {
+		maxNum		= 50;
+	}
+	maxPage		= maxItem/maxNum;
+}
 
 function getWidth() {
 	var carouselItem= $('.carousel-item');
 	var imgWidth 	= 0; 
 	if (window.matchMedia("(max-width: 768px)").matches) {
-		maxNum		= 25;
 		return imgWidth	= Math.floor(parseInt(carouselItem.width())/maxColMobile);
 	}
 	else {
 		maxNum		= 50;
+		maxPage		= maxItem/maxNum;
 		return imgWidth	= Math.floor(parseInt(carouselItem.width())/maxCol);	
 	}
 }
 
 function loadCarousel() {
 	var	imgWidth 	= 0;
-	for (i = 0; i < 10; i++) {
+	getMaxpages();
+	for (i = 0; i < maxPage; i++) {
 		if (i == 0) {
 			carousel.append(`<div class="active carousel-item m-0 w-50"><div class="d-flex flex-wrap justify-content-center" id="chart-${i}"></div></div>`);
 			indicator.append(`<li class="active" data-target="#charts" data-slide-to="${i}"></li>`);
