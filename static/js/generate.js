@@ -36,8 +36,8 @@ function checkCookie() {
 		setCookie('page', 0, 365);
 	}
 	else {
-		count 	= currCount;
-		page 	= getCookie('page');
+		count 	= parseInt(currCount);
+		page 	= parseInt(getCookie('page'));
 	}
 }	
 
