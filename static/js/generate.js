@@ -17,7 +17,6 @@ var maxPage			= 0;
 
 function change() {
 	if (page <= maxPage) {
-		console.log(count,page);
 		if (count >= 0) {
 			$(`#chart-${page} #lion-${count}`).css('filter', 'grayscale(0%)');
 			$(`#chart-${page} #lion-${count}`).css('cursor', 'default');
@@ -104,8 +103,6 @@ function loadChart(selector, imgWidth) {
 	var padding	= imgWidth/10;
 	for (j = 0; j < maxNum; j++) {
   		$(`#chart-${selector}`).append(`<img src="static/img/lion.svg" class="center-block" id="lion-${j}"/>`);
-  		console.log(count,j);
-  		console.log(selector,page);
   		if (selector > page || (selector == page && j >= count)) {
   			$(`#chart-${selector} #lion-${j}`).css('filter', 'grayscale(100%)');	
   		}
@@ -126,7 +123,6 @@ function update() {
 	if (count == (maxNum-1)) {
 		count 	= 0;
 		page++;
-		carouselPage++;
 		play.carousel('next');	
 	}
 	else {
@@ -136,24 +132,24 @@ function update() {
 	setCookie('page', page, 365);
 }
 
-controlLeft.click(function () {
-	if (carouselPage == 1) {
-		carouselPage	= maxPage;
-	}
-	else {
-		carouselPage--;
-	}
-	currPage.text(carouselPage);
-});
-
-controlRight.click(function () {
-	if (carouselPage == maxPage) {
-		carouselPage	= 1;
-	}
-	else {
-		carouselPage++;
-	}
-	currPage.text(carouselPage);
+play.bind('slide.bs.carousel', function (e) {
+    if (e.direction == 'left') {
+    	if (carouselPage == maxPage) {
+    		carouselPage	= 1;
+    	}
+    	else {
+    		carouselPage++;
+    	}
+    }
+    else {
+    	if (carouselPage == 1) {
+    		carouselPage	= maxPage;
+    	}
+    	else {
+    		carouselPage--;	
+    	}
+    }
+    currPage.text(carouselPage);
 });
 
 $('body').click(function() {
