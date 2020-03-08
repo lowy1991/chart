@@ -19,8 +19,8 @@ function loadCarousel() {
 }
 
 function loadChart(selector) {
-	for (j = 0; j < 35; j++) {
-  		$(`#chart-${selector}`).append('<img src="static/img/lion.svg" class="center-block filter" id="lion-' + j + '" />');
+	for (j = 0; j < 36; j++) {
+  		$(`#chart-${selector}`).append('<img src="static/img/lion.svg" class="center-block filter p-2" id="lion-' + j + '" />');
   		$(`#chart-${selector} #lion-${j}`).css('filter', 'grayscale(100%)');
 	}
 }
