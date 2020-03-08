@@ -106,7 +106,7 @@ function loadChart(selector, imgWidth) {
   		$(`#chart-${selector}`).append(`<img src="static/img/lion.svg" class="center-block" id="lion-${j}"/>`);
   		console.log(count,j);
   		console.log(selector,page);
-  		if (selector > page || (selector == page && j > count)) {
+  		if (selector > page || (selector == page && j >= count)) {
   			$(`#chart-${selector} #lion-${j}`).css('filter', 'grayscale(100%)');	
   		}
   		$(`#chart-${selector} #lion-${j}`).css('padding', padding);
