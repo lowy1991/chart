@@ -55,11 +55,11 @@ function loadCarousel() {
 	for (i = 0; i < maxPage; i++) {
 		if (i == 0) {
 			carousel.append(`<div class="active carousel-item m-0 w-50"><div class="d-flex flex-wrap justify-content-center" id="chart-${i}"></div></div>`);
-			indicator.append(`<li class="active" data-target="#charts" data-slide-to="${i}"></li>`);
+			// indicator.append(`<li class="active" data-target="#charts" data-slide-to="${i}"></li>`);
 		}
 		else {
 			carousel.append(`<div class="carousel-item m-0 w-50"><div class="d-flex flex-wrap justify-content-center" id="chart-${i}"></div></div>`);
-			indicator.append(`<li data-target="#charts" data-slide-to="${i}"></li>`);
+			// indicator.append(`<li data-target="#charts" data-slide-to="${i}"></li>`);
 		}
 		imgWidth = getWidth();
 		loadChart(i, imgWidth);
@@ -85,6 +85,7 @@ function update() {
 	else {
 		count 	= (count+1)%maxNum;
 	}
+	document.cookie	= `count=${count};page=${page};`;
 }
 
 $('body').click(function() {
