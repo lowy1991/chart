@@ -8,6 +8,7 @@ img 	{ width: 4.24em; }
 .carousel-item { -webkit-transition: -webkit-transform 0.24s linear !important; -o-transition: -o-transform 0.24s linear !important; transition: transform 0.24s linear !important; }
 .carousel-indicators { position: relative; }
 .footer 	{ width: 80%; color: #FBFBFF; font-family: 'Spectral', serif; font-size: .62em; text-align: center; }
+.header		{ letter-spacing: 0.16em; }
 .info 		{ letter-spacing: 0.16em; }
 .mandarin 	{ font-family: 'Ma Shan Zheng';}
 .page-link 	{ background-color: #34435E; color: #FBFBFF; }
