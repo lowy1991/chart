@@ -28,9 +28,33 @@ function change() {
 	}
 }
 
+function checkCookie() {
+	var currCount 	= getCookie('count');
+	if (currCount == "") {
+		setCookie('count', 0, 365);
+		setCookie('page', 1, 365);
+	}
+}	
+
 function fillChart() {
 	$(`#chart-${page} #lion-${count}`).css('cursor', 'pointer');
 	$(`#chart-${page} #lion-${count}`).on('click', change);
+}
+
+function getCookie(cname) {
+	var name = cname + "=";
+  	var decodedCookie = decodeURIComponent(document.cookie);
+  	var ca = decodedCookie.split(';');
+  	for(var i = 0; i < ca.length; i++) {
+  		var c = ca[i];
+   		while (c.charAt(0) == ' ') {
+      		c = c.substring(1);
+    	}
+    	if (c.indexOf(name) == 0) {
+      		return c.substring(name.length, c.length);
+    	}
+    }
+  	return "";
 }
 
 function getMaxpages() {
@@ -81,6 +105,14 @@ function loadChart(selector, imgWidth) {
 	}
 }
 
+function setCookie(cname, cvalue, exdays) {
+  	var d = new Date();
+  	var expires; 
+
+  	d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+  	document.cookie 	= cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+
 function update() {
 	if (count == (maxNum-1)) {
 		count 	= 0;
@@ -90,7 +122,9 @@ function update() {
 	else {
 		count 	= (count+1)%maxNum;
 	}
-	document.cookie	= `count=${count};page=${page};`;
+	setCookie('count', count, 365);
+	setCookie('page', page, 365);
+	var currCount = getCookie('count');
 }
 
 controlLeft.click(function () {
@@ -118,6 +152,7 @@ $('body').click(function() {
 });
 
 $(document).ready(function() {
+	checkCookie();
 	play.carousel('pause');
 	loadCarousel();
 	fillChart();
