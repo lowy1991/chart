@@ -158,7 +158,7 @@ $('body').click(function() {
 
 $(document).ready(function() {
 	checkCookie();
-	play.carousel('pause');
+	play.carousel(data-interval=false);
 	loadCarousel();
 	fillChart();
 });
