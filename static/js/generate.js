@@ -34,6 +34,10 @@ function checkCookie() {
 		setCookie('count', 0, 365);
 		setCookie('page', 0, 365);
 	}
+	else {
+		count 	= currCount;
+		page 	= getCookie('page');
+	}
 }	
 
 function fillChart() {
@@ -130,7 +134,7 @@ function update() {
 
 controlLeft.click(function () {
 	if (carouselPage == 1) {
-		carouselPage	= 8;
+		carouselPage	= maxPage;
 	}
 	else {
 		carouselPage--;
@@ -139,7 +143,7 @@ controlLeft.click(function () {
 });
 
 controlRight.click(function () {
-	if (carouselPage == 8) {
+	if (carouselPage == maxPage) {
 		carouselPage	= 1;
 	}
 	else {
