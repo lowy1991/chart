@@ -6,7 +6,7 @@ html 	{ width: 100%; height: 100%; }
 .bg 	{ background-color: rgba(62,78,80); }
 .carousel-control-next-icon { background-image: url(../img/arrow.svg); }
 .carousel-control-prev-icon { background-image: url(../img/arrow-left.svg); }
-.carousel-control-next-icon, .carousel-control-prev-icon { width: 2.62em; height: 2.62em; }
+.carousel-control-next-icon, .carousel-control-prev-icon { width: 1.62em; height: 1.62em; }
 .carousel-item { -webkit-transition: -webkit-transform 0.24s linear !important; -o-transition: -o-transform 0.24s linear !important; transition: transform 0.24s linear !important; }
 .footer 	{ width: 80%; color: #FBFBFF; font-family: 'Spectral', serif; font-size: .62em; text-align: center; }
 .header		{ letter-spacing: 0.16em; }
