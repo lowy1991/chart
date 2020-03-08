@@ -104,6 +104,8 @@ function loadChart(selector, imgWidth) {
 	var padding	= imgWidth/10;
 	for (j = 0; j < maxNum; j++) {
   		$(`#chart-${selector}`).append(`<img src="static/img/lion.svg" class="center-block" id="lion-${j}"/>`);
+  		console.log(count,j);
+  		console.log(selector,page);
   		if (selector >= page && j >= count) {
   			$(`#chart-${selector} #lion-${j}`).css('filter', 'grayscale(100%)');	
   		}
