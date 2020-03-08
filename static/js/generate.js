@@ -17,6 +17,7 @@ var maxPage			= 0;
 
 function change() {
 	if (page <= maxPage) {
+		console.log(count,page);
 		if (count >= 0) {
 			$(`#chart-${page} #lion-${count}`).css('filter', 'grayscale(0%)');
 			$(`#chart-${page} #lion-${count}`).css('cursor', 'default');
