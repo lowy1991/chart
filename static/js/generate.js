@@ -10,6 +10,24 @@ var maxItem			= 400;
 var maxNum			= 0;
 var maxPage			= 0;
 
+function change() {
+	if (page <= maxPage) {
+		if (count >= 0) {
+			$(`#chart-${page} #lion-${count}`).css('filter', 'grayscale(0%)');
+			$(`#chart-${page} #lion-${count}`).css('cursor', 'default');
+			$(`#chart-${page} #lion-${count}`).off('click', change);
+			update();
+			$(`#chart-${page} #lion-${count}`).css('cursor', 'pointer');
+			$(`#chart-${page} #lion-${count}`).on('click', change);
+		}
+	}
+}
+
+function fillChart() {
+	$(`#chart-${page} #lion-${count}`).css('cursor', 'pointer');
+	$(`#chart-${page} #lion-${count}`).on('click', change);
+}
+
 function getMaxpages() {
 	if (window.matchMedia("(max-width: 768px)").matches) {
 		maxNum		= 25;
@@ -27,8 +45,6 @@ function getWidth() {
 		return imgWidth	= Math.floor(parseInt(carouselItem.width())/maxColMobile);
 	}
 	else {
-		maxNum		= 50;
-		maxPage		= maxItem/maxNum;
 		return imgWidth	= Math.floor(parseInt(carouselItem.width())/maxCol);	
 	}
 }
@@ -53,24 +69,32 @@ function loadCarousel() {
 function loadChart(selector, imgWidth) {
 	var padding	= imgWidth/10;
 	for (j = 0; j < maxNum; j++) {
-  		$(`#chart-${selector}`).append(`<img src="static/img/lion.svg" class="center-block filter" id="lion-${j}"/>`);
+  		$(`#chart-${selector}`).append(`<img src="static/img/lion.svg" class="center-block" id="lion-${j}"/>`);
   		$(`#chart-${selector} #lion-${j}`).css('filter', 'grayscale(100%)');
   		$(`#chart-${selector} #lion-${j}`).css('padding', padding);
   		$(`#chart-${selector} #lion-${j}`).width(imgWidth-padding*2);
 	}
 }
 
+function update() {
+	if (count == (maxNum-1)) {
+		count 	= 0;
+		page++;
+		play.carousel('next');	
+	}
+	else {
+		count 	= (count+1)%maxNum;
+	}
+}
+
 $('body').click(function() {
 	play.carousel('pause');
-})
+});
 
 $(document).ready(function() {
 	play.carousel('pause');
 	loadCarousel();
-	console.log($('img').width());
-	console.log($('.carousel-item').css('width'));
-	console.log(parseInt($('.carousel-item').css('width'))/parseInt($('img').css('width')));
-	// loadChart();
+	fillChart();
 	// $('#lion-'+count).css('cursor', 'pointer');
 	// $('#lion-'+count).addClass('filter');
 	// $('.filter').click(function() {
