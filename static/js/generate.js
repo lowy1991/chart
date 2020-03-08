@@ -1,7 +1,12 @@
 var play		= $('.carousel');
 var carousel 	= $('#carousel-inner');
+var controlLeft	= $('.carousel-control-prev');
+var controlRight= $('.carousel-control-next');
+var currPage	= $('#current-page');
 var icon 		= $('img');
 var indicator	= $('#carousel-indicator');
+var totalPage 	= $('#total-page');
+var carouselPage= 1;
 var count 		= 0;
 var page 		= 0;
 var maxCol 			= 10;
@@ -36,6 +41,8 @@ function getMaxpages() {
 		maxNum		= 50;
 	}
 	maxPage		= maxItem/maxNum;
+	currPage.text(carouselPage);
+	totalPage.text(maxPage);
 }
 
 function getWidth() {
@@ -55,11 +62,9 @@ function loadCarousel() {
 	for (i = 0; i < maxPage; i++) {
 		if (i == 0) {
 			carousel.append(`<div class="active carousel-item m-0 w-50"><div class="d-flex flex-wrap justify-content-center" id="chart-${i}"></div></div>`);
-			// indicator.append(`<li class="active" data-target="#charts" data-slide-to="${i}"></li>`);
 		}
 		else {
 			carousel.append(`<div class="carousel-item m-0 w-50"><div class="d-flex flex-wrap justify-content-center" id="chart-${i}"></div></div>`);
-			// indicator.append(`<li data-target="#charts" data-slide-to="${i}"></li>`);
 		}
 		imgWidth = getWidth();
 		loadChart(i, imgWidth);
@@ -88,6 +93,26 @@ function update() {
 	document.cookie	= `count=${count};page=${page};`;
 }
 
+controlLeft.click(function () {
+	if (carouselPage == 1) {
+		carouselPage	= 8;
+	}
+	else {
+		carouselPage--;
+	}
+	currPage.text(carouselPage);
+});
+
+controlRight.click(function () {
+	if (carouselPage == 8) {
+		carouselPage	= 1;
+	}
+	else {
+		carouselPage++;
+	}
+	currPage.text(carouselPage);
+});
+
 $('body').click(function() {
 	play.carousel('pause');
 });
@@ -96,14 +121,4 @@ $(document).ready(function() {
 	play.carousel('pause');
 	loadCarousel();
 	fillChart();
-	// $('#lion-'+count).css('cursor', 'pointer');
-	// $('#lion-'+count).addClass('filter');
-	// $('.filter').click(function() {
-	// 	if (count >= 0) {
-	// 		$('#lion-'+count).css('filter', 'grayscale(0%)');
-	// 		$('#lion-'+count).css('cursor', 'default');
-	// 		count--;
-	// 		$('#lion-'+count).css('cursor', 'pointer');
-	// 	}
-	// });
 });
