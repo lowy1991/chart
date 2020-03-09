@@ -114,8 +114,8 @@ function loadChart(selector, imgWidth) {
 function setCookie(cname, cvalue, exdays) {
   	var d = new Date();
   	var expires; 
-
   	d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+  	expires = "expires="+ d.toUTCString();
   	document.cookie 	= cname + "=" + cvalue + ";" + expires + ";path=/";
 }
 
