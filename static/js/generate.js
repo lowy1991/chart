@@ -4,7 +4,11 @@ var currPage		= $('#current-page');
 var totalPage 		= $('#total-page');
 var carouselPage	= 1;
 var count 			= 0;
+var countWeek		= 0;
+var countMonth		= 0; 
+var countYear		= 0;
 var page 			= 0;
+var	lastLogin		= 0;
 var maxCol 			= 10;
 var maxColMobile	= 5;
 var maxItem			= 1000;
@@ -26,23 +30,24 @@ function change() {
 
 function checkCookie() {
 	var currCount 	= getCookie('count');
+	var d 			= new Date();
 	if (currCount == "") {
 		setCookie('count', 0, 365);
 		setCookie('countWeek', 0, 365);
 		setCookie('countMonth', 0, 365);
 		setCookie('countYear', 0, 365);
+		setCookie('lastLogin', d.toUTCString(), 365);
 		setCookie('page', 0, 365);
 	}
 	else {
-		count 	= parseInt(currCount);
-		page 	= parseInt(getCookie('page'));
+		count 		= parseInt(currCount);
+		countWeek	= parseInt(getCookie('countWeek'));
+		countMonth	= parseInt(getCookie('countMonth'));
+		countYear	= parseInt(getCookie('countYear'));
+		lastLogin	= new Date(Date.parse(getCookie('lastLogin')));
+		page 		= parseInt(getCookie('page'));
 	}
 }	
-
-function fillChart() {
-	$(`#chart-${page} #lion-${count}`).css('cursor', 'pointer');
-	$(`#chart-${page} #lion-${count}`).on('click', change);
-}
 
 function getCookie(cname) {
 	var name = cname + "=";
@@ -108,6 +113,12 @@ function loadChart(selector, imgWidth) {
   		$(`#chart-${selector} #lion-${j}`).css('padding', padding);
   		$(`#chart-${selector} #lion-${j}`).width(imgWidth-padding*2);
 	}
+	readyChart();
+}
+
+function readyChart() {
+	$(`#chart-${page} #lion-${count}`).css('cursor', 'pointer');
+	$(`#chart-${page} #lion-${count}`).on('click', change);
 }
 
 function setCookie(cname, cvalue, exdays) {
@@ -154,5 +165,4 @@ carousel.bind('slide.bs.carousel', function (e) {
 $(document).ready(function() {
 	checkCookie();
 	loadCarousel();
-	fillChart();
 });
