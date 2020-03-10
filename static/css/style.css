@@ -12,3 +12,5 @@ html 	{ width: 100%; height: 100%; }
 .header		{ letter-spacing: 0.16em; }
 .info 		{ letter-spacing: 0.16em; }
 .mandarin 	{ font-family: 'Ma Shan Zheng';}
+
+@media(max-width: 768px) { body { background-image: url(../img/sunset2.jpg) } }
