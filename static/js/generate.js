@@ -167,6 +167,18 @@ function setCookie(cname, cvalue, exdays) {
   	document.cookie 	= cname + "=" + cvalue + ";" + expires + ";path=/";
 }
 
+function throttle (limit) {
+    var wait = false;                 
+    return function () {              
+        if (!wait) {                  
+            wait = true;              
+            setTimeout(function () {  
+                wait = false;         
+            }, limit);
+        }
+    }
+ }
+
 function update() {
 	var d 			= new Date();
 	if (count == (maxNum-1)) {
@@ -222,4 +234,5 @@ $(document).ready(function() {
 	updateCounter();
 	loadCarousel();
 	readyChart();
+	window.addEventListener("scroll", throttle(200));
 });
