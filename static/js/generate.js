@@ -1,14 +1,10 @@
-var play		= $('.carousel');
-var carousel 	= $('#carousel-inner');
-var controlLeft	= $('.carousel-control-prev');
-var controlRight= $('.carousel-control-next');
-var currPage	= $('#current-page');
-var icon 		= $('img');
-var indicator	= $('#carousel-indicator');
-var totalPage 	= $('#total-page');
-var carouselPage= 1;
-var count 		= 0;
-var page 		= 0;
+var carousel		= $('.carousel');
+var carouselInner 	= $('#carousel-inner');
+var currPage		= $('#current-page');
+var totalPage 		= $('#total-page');
+var carouselPage	= 1;
+var count 			= 0;
+var page 			= 0;
 var maxCol 			= 10;
 var maxColMobile	= 5;
 var maxItem			= 1000;
@@ -32,6 +28,9 @@ function checkCookie() {
 	var currCount 	= getCookie('count');
 	if (currCount == "") {
 		setCookie('count', 0, 365);
+		setCookie('countWeek', 0, 365);
+		setCookie('countMonth', 0, 365);
+		setCookie('countYear', 0, 365);
 		setCookie('page', 0, 365);
 	}
 	else {
@@ -89,10 +88,10 @@ function loadCarousel() {
 	getMaxpages();
 	for (i = 0; i < maxPage; i++) {
 		if (i == 0) {
-			carousel.append(`<div class="active carousel-item m-0 w-50"><div class="d-flex flex-wrap justify-content-center" id="chart-${i}"></div></div>`);
+			carouselInner.append(`<div class="active carousel-item m-0 w-50"><div class="d-flex flex-wrap justify-content-center" id="chart-${i}"></div></div>`);
 		}
 		else {
-			carousel.append(`<div class="carousel-item m-0 w-50"><div class="d-flex flex-wrap justify-content-center" id="chart-${i}"></div></div>`);
+			carouselInner.append(`<div class="carousel-item m-0 w-50"><div class="d-flex flex-wrap justify-content-center" id="chart-${i}"></div></div>`);
 		}
 		imgWidth = getWidth();
 		loadChart(i, imgWidth);
@@ -123,7 +122,7 @@ function update() {
 	if (count == (maxNum-1)) {
 		count 	= 0;
 		page++;
-		play.carousel('next');	
+		carousel.carousel('next');	
 	}
 	else {
 		count 	= (count+1)%maxNum;
@@ -132,7 +131,7 @@ function update() {
 	setCookie('page', page, 365);
 }
 
-play.bind('slide.bs.carousel', function (e) {
+carousel.bind('slide.bs.carousel', function (e) {
     if (e.direction == 'left') {
     	if (carouselPage == maxPage) {
     		carouselPage	= 1;
