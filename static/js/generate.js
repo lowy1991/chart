@@ -234,5 +234,5 @@ $(document).ready(function() {
 	updateCounter();
 	loadCarousel();
 	readyChart();
-	window.addEventListener("scroll", throttle(200));
+	window.addEventListener("scroll", throttle(500));
 });
