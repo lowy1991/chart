@@ -44,8 +44,17 @@ function checkCookie() {
 	else {
 		count 		= parseInt(currCount);
 		countWeek	= parseInt(getCookie('countWeek'));
+		if (countWeek == "") {
+			countWeek	= count;
+		}
 		countMonth	= parseInt(getCookie('countMonth'));
+		if (countMonth == "") {
+			countMonth	= count;
+		}
 		countYear	= parseInt(getCookie('countYear'));
+		if (countYear == "") {
+			countYear	= count;
+		}
 		lastLogin	= new Date(Date.parse(getCookie('lastLogin')));
 		page 		= parseInt(getCookie('page'));
 	}
@@ -210,6 +219,7 @@ carousel.bind('slide.bs.carousel', function (e) {
 $(document).ready(function() {
 	checkCookie();
 	resetCount();
+	updateCounter();
 	loadCarousel();
 	readyChart();
 });
