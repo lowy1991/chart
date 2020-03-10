@@ -152,13 +152,8 @@ play.bind('slide.bs.carousel', function (e) {
     currPage.text(carouselPage);
 });
 
-$('body').click(function() {
-	play.carousel('pause');
-});
-
 $(document).ready(function() {
 	checkCookie();
-	play.carousel('pause');
 	loadCarousel();
 	fillChart();
 });
